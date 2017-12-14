@@ -10,6 +10,7 @@ port = 2345
 def serv_function(srv_ip, srv_port, msg2srv):
     sock.connect((srv_ip, srv_port))
     sock.send(msg2srv.encode())
+    sock.close()
 
 def usage(python_file):
     print("usage:", python_file, "[message]")
