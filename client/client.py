@@ -10,6 +10,6 @@ if __name__ == '__main__':
     if argc != 2:
         print
     print(sys.argv[1])
-
+prout
 
 
