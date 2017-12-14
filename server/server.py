@@ -2,19 +2,20 @@
 import socket
 import _thread
 
-## socket serveur
-Sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-Host = '127.0.0.1' # l'ip locale de l'ordinateur
-Port = 2345         # choix d'un port 
+# socket serveur
+sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+host = '127.0.0.1'  # l'ip locale de l'ordinateur
+port = 2345         # choix d'un port
+
 # on bind notre socket
-Sock.bind((Host,Port))
-# On est pret à accueillir 10 clients
-Sock.listen(10)
+sock.bind((host,port))
+
+# On est pret à accueillir 10 clients max
+sock.listen(10)
 
 # une fonction pour accueillir un client
 # parametre: conn : socket correspondante au client
 # pour chaque client, on recoit une donnée et l'affiche
-
 def client_thread(conn):
         while True:
                 data = conn.recv(255).decode()
@@ -24,30 +25,15 @@ def client_thread(conn):
                 print(data)
         conn.close()
 
-def CesarCrypt(ch,n):
-    result = ''
-    for i in range(len(ch)):
-        result = result + chr((ord(ch[i]) + n-ord('A')) % 26 + ord('A'))
-    return result
-
-def CesarDcrypt(ch,n)
-	result = result + 
-str_cryp = 'chaine de caractere recu'
-int_cle = 'cle recu'
-
-str_origin=CesarDCrypt(str_cryp,int_cle)
-
-print (str_origin)
-
-# str_origin = input("Entrer un message : ")
-# int_cle = int(input("Entrer la clé : "))
-# str_cryp=CesarCrypt(str_origin,int_cle)
-# print(str_cryp)
-
-
-#le serveur accueille des clients
-while True:
-       c, addr = Sock.accept()     # Establish connection with client.
-       _thread.start_new_thread(client_thread, (c,))
-Sock.close()
-print("server")
+if __name__ == '__main__':
+    print("server is running")
+    try:
+        while True:
+            c, addr = sock.accept()
+            _thread.start_new_thread(client_thread, (c,))
+        sock.close()
+        print("jo")
+    except Exception :
+        import traceback
+        print("hi")
+        #print(traceback.format.exc())
