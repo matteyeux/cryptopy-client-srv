@@ -30,10 +30,19 @@ def CesarCrypt(ch,n):
         result = result + chr((ord(ch[i]) + n-ord('A')) % 26 + ord('A'))
     return result
 
-str_origin = input("Entrer un message : ")
-int_cle = int(input("Entrer la clé : "))
-str_cryp=CesarCrypt(str_origin,int_cle)
-print(str_cryp)
+def CesarDcrypt(ch,n)
+	result = result + 
+str_cryp = 'chaine de caractere recu'
+int_cle = 'cle recu'
+
+str_origin=CesarDCrypt(str_cryp,int_cle)
+
+print (str_origin)
+
+# str_origin = input("Entrer un message : ")
+# int_cle = int(input("Entrer la clé : "))
+# str_cryp=CesarCrypt(str_origin,int_cle)
+# print(str_cryp)
 
 
 #le serveur accueille des clients
