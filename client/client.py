@@ -3,35 +3,54 @@ import sys
 import os
 import socket
 
+# on va chercher le module cesar avec l'algo cesar implémenté
+sys.path.insert(0, "../server")
+import cesar
+
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = '127.0.0.1'
 port = 2345
 
-def serv_function(srv_ip, srv_port, msg2srv):
-    sock.connect((srv_ip, srv_port))
-    sock.send(msg2srv.encode())
-    sock.close()
+# envoie et reçoit les données du serveur
+# return : le resultat de la chaine envoyée par le serveur
+# on precise comme argument l'ip du srv, le port, le msg a envoyer puis la clé pour dechiffrer
+def send_and_recv(srv_ip, srv_port, msg2srv, key):
+	sock.connect((srv_ip, srv_port))
 
-def crypt_string(msg2crypt, key):
-    result = ''
-    for i in range(len(msg2crypt)):
-        result = result + chr((ord(msg2crypt[i]) + key - ord('A')) % 26 + ord('A'))
-    return result
+	key_and_msg = str(key) + ":" + msg2srv
+	print("[i] key and message : " + key_and_msg)
+	sock.send(key_and_msg.encode())
+
+	srv_reply = sock.recv(255).decode()
+	print(srv_reply)
+
+	decrypted = sock.recv(255).decode()
+	print("[x] decrypted msg : " + decrypted)
+
+	sock.close()
+	return decrypted
 
 def usage(python_file):
     print("usage:", python_file, "[message] <key>")
 
+
 if __name__ == '__main__':
-    #print(crypt_string("aaaa", 12))
-    argc = len(sys.argv)
-    if argc <= 1:
-        usage(sys.argv[0])
-        sys.exit()
-    if argc == 3:
-        crypto_key = int(sys.argv[2])
-    else :
-        crypto_key = 4
-    message = sys.argv[1]
-    crypted_msg = crypt_string(message, crypto_key)
-    print(crypted_msg)
-    serv_function("127.0.0.1", 2345, crypted_msg)
+	argc = len(sys.argv)
+	if argc <= 1:
+		usage(sys.argv[0])
+		sys.exit()
+	if argc == 3:
+		crypto_key = int(sys.argv[2])
+	else :
+		crypto_key = 4
+	message = sys.argv[1]
+	# on appelle la fonction cesar_crypt(string, key) depuis le module cesar
+	crypted_msg = cesar.cesar_crypt(message, crypto_key)
+	print("[i] crypted message : " +crypted_msg)
+
+    # la variable check aura la valeur de la chaine dechiffrée
+	check = send_and_recv(host, port, crypted_msg, crypto_key)
+	if check == message:
+		print("[+] server successfully decrytped string")
+	else :
+		print("[e] string is wrong")
