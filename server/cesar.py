@@ -1,10 +1,11 @@
+#!/usr/bin/python3
 def CesarCrypt(ch,n):
     result = ''
     for i in range(len(ch)):
         result = result + chr((ord(ch[i]) + n-ord('a')) % 26 + ord('a'))
     return result
 
-str_origin = raw_input("Entrer un message : ")
+str_origin = input("Entrer un message : ")
 
 for i in range(len(str_origin)):
 	str_origin[i].isupper()
@@ -22,13 +23,13 @@ def decrypte(ch,n):
 	for i in range(len(ch)):
 		result = result + chr((ord(ch[i]) - n - ord('a')) % 26 + ord('a'))
 	return result
-str_cryp1 = raw_input("Entrer un message : ")
+str_cryp1 = input("Entrer un message : ")
 
 for i in range(len(str_cryp1)):
 	str_origin[i].islower()
 	lower = list().append(i)
 	
-	for i in range(len(Upper))
+	#for i in range(len(Upper))
 		
 
 str_origin= str_origin.lower()
