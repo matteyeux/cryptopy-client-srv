@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 import socket
 import _thread
-
+import sys
+sys.tracebacklimit=0
 # socket serveur
 sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 host = '127.0.0.1'  # l'ip locale de l'ordinateur
@@ -27,13 +28,7 @@ def client_thread(conn):
 
 if __name__ == '__main__':
     print("server is running")
-    try:
-        while True:
-            c, addr = sock.accept()
-            _thread.start_new_thread(client_thread, (c,))
-        sock.close()
-        print("jo")
-    except Exception :
-        import traceback
-        print("hi")
-        #print(traceback.format.exc())
+    while True:
+        c, addr = sock.accept()
+        _thread.start_new_thread(client_thread, (c,))
+    sock.close()
