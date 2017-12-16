@@ -1,42 +1,30 @@
 #!/usr/bin/python3
-def CesarCrypt(ch,n):
-    result = ''
-    for i in range(len(ch)):
-        result = result + chr((ord(ch[i]) + n-ord('a')) % 26 + ord('a'))
-    return result
+# fonction qui va chiffrer notre chaine de caractères à l'aide d'une clé
+# la clé est passée en parametre de la fonction
+def cesar_crypt(string, key):
+	for i in range(len(string)):
+		string[i].isupper()
+		Upper = list().append(i)
+		string[i].islower()
+		Upper = list().append(0)
 
-str_origin = input("Entrer un message : ")
+	string = string.lower()
 
-for i in range(len(str_origin)):
-	str_origin[i].isupper()
-	Upper = list().append(i)
-	str_origin[i].islower()
-	Upper = list().append(0)
-
-str_origin= str_origin.lower()
-int_cle = int(input("Entrer la cle : "))
-str_cryp=CesarCrypt(str_origin,int_cle)
-print(str_cryp)
-
-def decrypte(ch,n):
 	result = ''
-	for i in range(len(ch)):
-		result = result + chr((ord(ch[i]) - n - ord('a')) % 26 + ord('a'))
+	for i in range(len(string)):
+		result = result + chr((ord(string[i]) + key-ord('a')) % 26 + ord('a'))
 	return result
-str_cryp1 = input("Entrer un message : ")
-
-for i in range(len(str_cryp1)):
-	str_origin[i].islower()
-	lower = list().append(i)
-	
-	#for i in range(len(Upper))
-		
-
-str_origin= str_origin.lower()
 
 
+# fonction pour dechiffrer la clé
+def cesar_decrypt(string,key):
+	for i in range(len(string)):
+		string[i].islower()
+		lower = list().append(i)
 
+	string= string.lower()
 
-int_cle1 = int(input("Entrer la cle : "))
-str_origin1 = decrypte(str_cryp1,int_cle1)
-print(str_origin1)
+	result = ''
+	for i in range(len(string)):
+		result = result + chr((ord(string[i]) - key - ord('a')) % 26 + ord('a'))
+	return result
