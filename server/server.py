@@ -29,7 +29,7 @@ def client_thread(conn):
 	while True:
 		data = conn.recv(255).decode()
 		if not data:
-			print("[-] connection lost\n")
+			print("[-] connection stopped\n")
 			conn.close()
 			sys.exit(-1)
 			print(data)
