@@ -14,13 +14,18 @@ usage: ./client.py [message] <key>
 
 Make sure you are in the client directory or you'll get an error like that :
 ```
-./client/client.py
+$ ./client/client.py
 Traceback (most recent call last):
   File "./client/client.py", line 8, in <module>
     import cesar
 ImportError: No module named 'cesar'
 ```
 Then run client : 
+`$ ./client.py bonjour 123`.
+Default key is 4<br>
+
+![client-srv-ex](example.png)
+
 # credits
 - [_thomas](https://twitter.com/0512thomas)
 - [eehp](https://twitter.com/eehp205)
