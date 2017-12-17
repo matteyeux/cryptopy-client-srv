@@ -2,7 +2,7 @@
 import sys
 import os
 import socket
-
+from random import randint
 # on va chercher le module cesar avec l'algo cesar implémenté
 sys.path.insert(0, "../server")
 import cesar
@@ -42,11 +42,11 @@ if __name__ == '__main__':
 	if argc == 3:
 		crypto_key = int(sys.argv[2])
 	else :
-		crypto_key = 4
+		crypto_key = randint(1,10000)
 	message = sys.argv[1]
 	# on appelle la fonction cesar_crypt(string, key) depuis le module cesar
 	crypted_msg = cesar.cesar_crypt(message, crypto_key)
-	print("[i] crypted message : " +crypted_msg)
+	print("[i] crypted message : " + crypted_msg)
 
     # la variable check aura la valeur de la chaine dechiffrée
 	check = send_and_recv(host, port, crypted_msg, crypto_key)
