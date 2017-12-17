@@ -26,6 +26,8 @@ Default key is 4<br>
 
 ![client-srv-ex](example.png)
 
+I also added a GUI <br>
+![client-srv-gui](gui-example.png) 
 # credits
 - [_thomas](https://twitter.com/0512thomas)
 - [eehp](https://twitter.com/eehp205)
