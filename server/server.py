@@ -34,16 +34,16 @@ def client_thread(conn):
 			sys.exit(-1)
 			print(data)
 
-		print("[i] data received : " + data)
-		print("[i] data to decrypt : " + data[2:])
-
 		key = data.split(":",1)[0] # data[:1] is bad when key is > 9 better use split
+		data2dec = data.split(":",1)[1]
+
+		print("[i] data received : " + data)
+		print("[i] data to decrypt : " + data.split(":",1)[1])
 		print("[i] key : " + key)
 
 		cool = "[x] reply from serv : " + data
 		client.send(cool.encode())
 
-		data2dec = data.split(":",1)[1]
 		dec_data = cesar.cesar_decrypt(data2dec, int(key))
 		print("[i] decrypted string : " + dec_data)
 		client.send(dec_data.encode())
