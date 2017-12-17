@@ -38,7 +38,7 @@ def client_thread(conn):
 		data2dec = data.split(":",1)[1]
 
 		print("[i] data received : " + data)
-		print("[i] data to decrypt : " + data.split(":",1)[1])
+		print("[i] data to decrypt : " + data2dec)
 		print("[i] key : " + key)
 
 		cool = "[x] reply from serv : " + data
