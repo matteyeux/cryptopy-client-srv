@@ -18,7 +18,7 @@ def read_and_crypt(file_to_touch):
 	f.close()
 
 def send_crypted_file(crypted_file): #theo was here
-	
+
 	socketServeur = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 	socketServeur.bind(("127.0.0.1",2000))
 	socketServeur.listen(1)
@@ -28,8 +28,8 @@ def send_crypted_file(crypted_file): #theo was here
 	while True:
 	    chunk = file2send.read(65536) #lire donnee dans le fichier
 	    if not chunk: 
-	        break  # EOF
-	    socketClient.sendall(chunk) # envoie à la socket
+                break  # EOF
+            socketClient.sendall(chunk) # envoie à la socket
 	file2send.close()
 	socketClient.close()
 	socketServeur.close()
@@ -49,4 +49,4 @@ if __name__ == '__main__':
 		sys.exist(1)
 	
 	read_and_crypt(arg_file)
-	send_crypted_file(arg_file)
+        send_crypted_file(arg_file)
