@@ -15,7 +15,6 @@ def cesar_crypt(string, key):
 		result = result + chr((ord(string[i]) + key-ord('a')) % 26 + ord('a'))
 	return result
 
-
 # fonction pour dechiffrer la clé
 def cesar_decrypt(string,key):
 	for i in range(len(string)):
