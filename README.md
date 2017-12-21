@@ -5,7 +5,23 @@ simple poc don't use in production :P <br>
 # usage 
 ### Server
 First, start server, it will listen on port `2345`
-
+### Tree
+```
+├── client
+│   ├── a.txt
+│   ├── client.py
+│   └── send_file.py
+├── example.png
+├── GUI
+│   ├── client_gui.py
+│   └── server_gui.py
+├── gui-example.png
+├── README.md
+└── server
+    ├── cesar.py
+    ├── receive_file.py
+    └── server.py
+```
 ### Client
 ```
 ./client.py
